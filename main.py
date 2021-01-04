@@ -69,6 +69,9 @@ class RaceTrackEpisodeGenerator:
         return False
 
     def _outside_grid(self, next_state):
+        if self.track.track_grid.shape[0] - 1 < next_state.position[0] \
+                or self.track.track_grid.shape[1] - 1 < next_state.position[1]:
+            return True
         if self.track.track_grid[next_state.position] == -1:
             return True
         return False
